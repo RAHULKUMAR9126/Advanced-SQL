@@ -179,7 +179,7 @@ FROM Products
 GROUP BY Category;
 
 
--- Q8. Create an updatable view containing ProductID, ProductName, and Price. Then update the price of ProductID 1 using the view.
+-- Q8. Create an updatable view containing ProductID, ProductName, and Price. Then update the price of ProductID=1 using the view.
 CREATE VIEW vw_Product_Details AS
 SELECT Product_ID, Product_Name, Price
 FROM Products;
@@ -202,7 +202,10 @@ DELIMITER ;
 CALL GetProductsByCategory('Electronics');
 
 
--- Q10. Create an AFTER DELETE trigger on the Products table that archives deleted product rows into a new table.
+/* Q10. Create an AFTER DELETE trigger on the Products table that archives deleted product rows into a new table ProductArchive.
+The archive should store ProductID, ProductName, Category, Price, and DeletedAt timestamp.
+*/
+
 -- Create the archive table
 CREATE TABLE ProductArchive (
     ProductID INT,
